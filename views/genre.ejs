@@ -1,0 +1,32 @@
+<html lang="en">
+<head>
+    <title>
+        <%= DBData.genre %>
+    </title>
+</head>
+<body>
+<%- include('partial/sidebar')%>
+<main>
+    <h1>
+        <%= DBData.genre %>
+    </h1>
+    <section>
+        <%
+            if(DBData.games.length > 0){
+                for (let i = 0; i < DBData.games.length; i++) {
+                 %>
+                    <a href="/game/<%=DBData.game_ids[i]%>"><%=DBData.games[i]%></a><br>
+        <%
+                }}
+        %>
+        <button onclick="window.location.href='/genre/edit/<%=DBData.id%>'">Edit</button>
+        <form action="/genre/delete/<%=DBData.id%>" method="post">
+            <label>Password:
+                <input type="password" name="password" required>
+                <input type="submit" value="Delete">
+            </label>
+        </form>
+    </section>
+</main>
+</body>
+</html>

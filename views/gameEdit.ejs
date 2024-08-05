@@ -1,0 +1,51 @@
+<html lang="en">
+<head>
+    <title>
+        <%= gameData.name %>
+    </title>
+</head>
+<body>
+<%- include('partial/sidebar')%>
+<main>
+    <h1><%=gameData.name%></h1>
+    <% if (typeof errors !== 'undefined' && errors) { %>
+        <% errors.forEach(function(error) { %>
+            <p><%= error.msg %></p>
+        <% }) %>
+    <% } %>
+    <form action="/game/edit/<%=gameData.id%>" method="post">
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" value="<%=gameData.name%>">
+        <label for="price">Price</label>
+        <input type="number" id="price" name="price" value="<%=gameData.price%>"><br>
+        <label>Genres:
+            <select name="genres" multiple size="10">
+                <% genres.forEach(function(genre) { %>
+                    <option value="<%= genre.id %>"
+                    <% if (gameData.genres.includes(genre.genre_name)) { %>
+                            selected
+                            <% } %>
+                         >
+                        <%= genre.genre_name %>
+                    </option>
+                <% }); %>
+            </select>
+        </label>
+        <label>Companies:
+        <select name="companies" multiple size="10">
+            <% companies.forEach(function(company) { %>
+                <option value="<%= company.id %>"
+                <% if (gameData.companies.includes(company.company_name)) { %>
+                        selected
+                        <% } %>
+                >
+                    <%= company.company_name %>
+                </option>
+            <% }); %>
+        </select>
+        </label><br>
+        <button type="submit">Edit game</button>
+    </form>
+</main>
+</body>
+</html>

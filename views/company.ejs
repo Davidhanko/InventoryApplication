@@ -1,0 +1,39 @@
+<html lang="en">
+<%
+%>
+<head>
+    <title>
+        <%=DBData.company %>
+    </title>
+</head>
+<body>
+<%- include('partial/sidebar')%>
+<main>
+    <h1>
+        <%=DBData.company %>
+    </h1>
+    <section>
+        <p><strong>Country: </strong> <%=DBData.country%></p>
+        <%if (DBData.games.length > 0){
+        %>
+        <h2>Games</h2>
+        <ul>
+            <%for(let i = 0; i < DBData.games.length; i++){
+            %>
+            <li><a href="/game/<%=DBData.game_ids[i]%>"><%=DBData.games[i]%></a></li>
+            <%
+            }%>
+        </ul>
+        <%
+        }%>
+        <button onclick="window.location.href='/company/edit/<%=DBData.id%>'">Edit</button>
+        <form action="/company/delete/<%=DBData.id%>" method="post">
+            <label>Password:
+                <input type="password" name="password" required>
+                <input type="submit" value="Delete">
+            </label>
+        </form>
+    </section>
+</main>
+</body>
+</html>

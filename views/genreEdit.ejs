@@ -1,0 +1,26 @@
+<html lang="en">
+<head>
+    <title>
+        <%= title %>
+    </title>
+</head>
+<body>
+<%- include('partial/sidebar')%>
+<main>
+    <h1>
+        <%= title %>
+    </h1>
+    <% if (typeof errors !== 'undefined' && errors) { %>
+        <% errors.forEach(function(error) { %>
+            <p><%= error.msg %></p>
+        <% }) %>
+    <% } %>
+    <form action="/genre/edit/<%=DBData.id%>" method="post">
+        <label>Name:<br>
+        <input type="text" name="genre" id="genre" required value="<%=DBData.genre%>">
+        </label>
+        <button type="submit">Submit</button>
+    </form>
+</main>
+</body>
+</html>

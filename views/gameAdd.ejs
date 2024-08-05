@@ -1,0 +1,41 @@
+<html lang="en">
+<head>
+    <title>
+        <%= title %>
+    </title>
+</head>
+<body>
+<%- include('partial/sidebar')%>
+<main>
+    <h1><%=title%></h1>
+    <% if (typeof errors !== 'undefined' && errors) { %>
+        <% errors.forEach(function(error) { %>
+            <p><%= error.msg %></p>
+        <% }) %>
+    <% } %>
+    <form action="/add/game" method="post">
+        <label>Game name:
+            <input type="text" required name="name" id="name">
+        </label><br>
+        <label>Price:
+            <input type="number" required name="price" id="price" min="0">
+        </label><br>
+        <label>Genres (you can select multiple options by holding down the Ctrl key):
+            <select multiple name="genres" id="genres" size="10">
+                <% genres.forEach(function(genre) { %>
+                    <option value="<%= genre.id %>"><%= genre.genre_name %></option>
+                <% }) %>
+            </select>
+        </label><br>
+        <label>Companies (you can select multiple options by holding down the Ctrl key):
+            <select multiple name="companies" id="companies" size="10">
+                <% companies.forEach(function(company) { %>
+                    <option value="<%= company.id %>"><%= company.company_name %></option>
+                <% }) %>
+            </select>
+        </label><br>
+        <button type="submit">Add game</button>
+    </form>
+</main>
+</body>
+</html>

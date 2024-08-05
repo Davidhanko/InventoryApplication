@@ -1,0 +1,26 @@
+<html lang="en">
+<head>
+    <title>
+        <%= title %>
+    </title>
+</head>
+<body>
+<%- include('partial/sidebar')%>
+<main>
+    <h1>
+        <%= title %>
+    </h1>
+    <% if (typeof errors !== 'undefined' && errors) { %>
+        <% errors.forEach(function(error) { %>
+            <p><%= error.msg %></p>
+        <% }) %>
+    <% } %>
+    <form action="genre" method="post">
+        <label>Type in genres separated by comma "," without space<br>
+        <textarea name="genres" id="genres" required rows="10" cols="25"></textarea>
+        </label>
+        <button type="submit">Submit</button>
+    </form>
+</main>
+</body>
+</html>

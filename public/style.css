@@ -1,0 +1,35 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    display: flex;
+    flex-direction: row;
+    background-color: aliceblue;
+}
+
+main{
+    flex: 3;
+}
+
+main>*{
+    margin-left: 45px;
+}
+
+main>h1{
+    margin-left: 25px;
+}
+
+
+aside{
+    flex: 0.3;
+    background-color: #f1f1f1;
+    border-right: gray 1px solid;
+}
+
+.divider{
+    display: flex;
+    gap: 150px;
+}

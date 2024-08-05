@@ -1,0 +1,23 @@
+<html lang="en">
+<head>
+    <title>
+        <%=title %>
+    </title>
+</head>
+<body>
+<%- include('partial/sidebar')%>
+<main>
+    <h1>
+        <%=title %>
+    </h1>
+    <section>
+        <%
+        DBData.forEach(function (data) {
+            %>
+        <p><a href="company/<%=data.id%>" ><%=data.company_name %></a>, <%=data.company_country%></p>
+        <%
+        });%>
+    </section>
+</main>
+</body>
+</html>

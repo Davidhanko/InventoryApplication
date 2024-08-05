@@ -1,0 +1,47 @@
+<html lang="en">
+<head>
+    <title>
+        <%=DBData.name %>
+    </title>
+</head>
+<body>
+<%- include('partial/sidebar')%>
+<main>
+    <h1>
+        <%=DBData.name %>
+    </h1>
+    <section>
+        <p><strong>Price: </strong> <%=DBData.price%> €</p>
+        <div class="divider">
+            <div>
+        <h2>Genres</h2>
+        <ul>
+            <%for(let i = 0; i < DBData.genres.length; i++){
+            %>
+            <li><a href="/genre/<%=DBData.genre_id[i]%>"><%=DBData.genres[i]%></a></li>
+            <%
+            }%>
+        </ul>
+            </div>
+            <div>
+        <h2>Companies</h2>
+        <ul>
+            <%for(let i = 0; i < DBData.companies.length; i++){
+            %>
+            <li><a href="/company/<%=DBData.company_id[i]%>"><%=DBData.companies[i]%></a></li>
+            <%
+            }%>
+        </ul>
+            </div>
+        </div>
+        <button onclick="window.location.href='/game/edit/<%=DBData.id%>'">Edit</button>
+        <form action="/game/delete/<%=DBData.id%>" method="post">
+            <label>Password:
+                <input type="password" name="password" required>
+                <input type="submit" value="Delete">
+            </label>
+        </form>
+    </section>
+</main>
+</body>
+</html>

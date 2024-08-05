@@ -25,8 +25,4 @@ companyRouter.post('/delete/:id', body('password').equals('delete').isLength({ m
     companyController.deleteCompany)
 
 
-companyRouter.get('*', (req, res) => {
-    res.render('404', { title: '404 - Page not found'});
-})
-
 module.exports = companyRouter;

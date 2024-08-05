@@ -12,7 +12,7 @@ async function game(req, res){
     const data = await db.getAllDataOnGame(id);
     res.render('game', { DBData: data});
     } catch (err){
-        res.render("../404", {title: "Internal Server Error 500"})
+        res.render("404", {title: "Internal Server Error 500"})
     }
 }
 

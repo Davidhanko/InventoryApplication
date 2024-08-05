@@ -20,7 +20,7 @@ async function addGame(req, res){
         const companies = await db.getCompanyIndex();
         res.render('gameAdd', { title: 'Add game', genres, companies });
     } catch (err){
-        res.render("../404", {title: "Internal Server Error 500"})
+        res.render("404", {title: "Internal Server Error 500"})
     }
 }
 
@@ -34,7 +34,7 @@ async function addCompanyPost(req, res){
     await db.addCompany(name, country);
     res.redirect('../company');
     } catch (err){
-        res.render("../404", {title: "Internal Server Error 500"})
+        res.render("404", {title: "Internal Server Error 500"})
     }
 }
 
@@ -56,7 +56,7 @@ async function addGenrePost(req, res) {
         res.redirect('../genre');
     }
     catch (err) {
-        res.render("../404", {title: "Internal Server Error 500"})
+        res.render("404", {title: "Internal Server Error 500"})
     }
 }
 

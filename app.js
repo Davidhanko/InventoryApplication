@@ -5,7 +5,9 @@ const indexRouter = require("./routes/indexRouter");
 const companyRouter = require("./routes/companyRouter");
 const genreRouter = require("./routes/genreRouter");
 const addRouter = require("./routes/addRouter");
-require("dotenv").config({path: "./dot.env"});
+const dotenv = require("dotenv");
+const path = require("path");
+dotenv.config({ path: path.resolve(__dirname, '../dot.env') })
 
 app.use('/public', express.static('public'));
 app.set("view engine", "ejs");

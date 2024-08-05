@@ -21,7 +21,7 @@ async function getAllDataOnGame(id) {
                  LEFT JOIN game_companies ON games.id = game_companies.game_id
                  LEFT JOIN companies ON game_companies.company_id = companies.id
         WHERE games.id = $1
-        GROUP BY games.id
+        GROUP BY games.id, games.game_name, games.game_price
     `;
 
     const {rows} = await db.query(query, [id]);
@@ -51,7 +51,7 @@ async function getAllCompanyData(id){
                               JOIN game_companies ON games.id = game_companies.game_id
                               JOIN companies ON game_companies.company_id = companies.id
                      WHERE companies.id = $1
-                     GROUP BY companies.id`;
+                     GROUP BY companies.id, companies.company_name, companies.company_country`;
         const { rows } = await db.query(SQL, [id]);
         return rows[0];
     } else {
@@ -86,7 +86,7 @@ async function getAllGenreData(id){
                               JOIN game_genres ON games.id = game_genres.game_id
                               JOIN genres ON game_genres.genre_id = genres.id
                      WHERE genres.id = $1
-                     GROUP BY genres.id`;
+                     GROUP BY genres.id, genres.genre_name`;
         const { rows } = await db.query(SQL, [id]);
         return rows[0];
     } else {
